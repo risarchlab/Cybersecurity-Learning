@@ -1,1 +1,22 @@
+# 🎯 Hack The Box (HTB) Journey
 
+This directory contains my write-ups, custom scripts, and notes from my labs on [Hack The Box](https://www.hackthebox.com/). My goal is to document my methodology for various attack vectors and privilege escalation techniques.
+
+---
+
+## 🛠️ Skills & Tools Mastered
+* **Scanning:** Nmap, Rustscan, GoBuster
+* **Exploitation:** Metasploit, Manual SQLi, Reverse Shells
+* **Privilege Escalation:** Linux (Sudo-rights, SUID, Cronjobs), Windows (Token Manipulation)
+
+---
+
+## 📂 Lab Write-ups
+| Date | Lab/Room Name | Focus | Key Learning |
+| :--- | :--- | :--- | :--- |
+| 2026-02-18 | [Linux Privilege Escalation: Special Permissions](./01-linux-privilege-escalation) | Linux Enumeration | SUID/SGID Binary Exploitation |
+
+---
+
+## 🚀 Key Takeaways
+Every folder in this directory represents a "Lesson Learned." I focus on not just getting the "root" flag, but understanding the underlying vulnerability that made it possible.
