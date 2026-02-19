@@ -25,7 +25,7 @@ Aspiring Penetration Tester | Currently studying for PenTest+ | Open to SOC Anal
 
 ## 🗂️ Learning Journals
 
-### [Linux Privilege Escalation](./01-linux-privilege-escalation/)
+### [Linux Privilege Escalation](hackthebox/01-linux-privilege-escalation)
 - Restricted Shell Escapes (rbash)
 - SUID/SGID Binary Exploitation
 - Sudo Misconfigurations
