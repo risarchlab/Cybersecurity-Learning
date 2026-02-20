@@ -7,7 +7,7 @@ This report covers network pivoting techniques using sshuttle to access internal
 
 ## Key Concepts Learned
 
-### 1. Network Segmentation
+### Network Segmentation
 **What it is:** Internal networks that aren't directly accessible from external networks.
 
 **Why it matters:**
@@ -50,7 +50,9 @@ nmap -F 203.0.113.1 -oN edge_scan.nmap
 ```bash
 nmap -p 445 --script smb-os-discovery 10.1.16.2 -oN smb_scan.nmap
 ```
-- port 445 (Server Message Block) = Windows file sharing protocol
+- ```445``` (Server Message Block) = Windows file sharing protocol
+- ```--script smb-os-discovery``` = Run script to identify Windows OS and hostname
+- ```-oN [output_file]``` = save results to [output_file]
   
 **Scan through tunnel (skip ping):**
 ```bash
@@ -91,11 +93,6 @@ sshuttle -r user@jump_host 10.0.0.0/24
 **With logging and DNS:**
 ```bash
 sshuttle --dns -r user@jump_host 10.0.0.0/24 --syslog
-```
-
-**Verbose mode for troubleshooting:**
-```bash
-sshuttle --dns -r user@jump_host 10.0.0.0/24 --syslog -vv
 ```
 
 #### How sshuttle Works
@@ -154,6 +151,10 @@ nmap -p [port] [internal_ip] -oN direct_scan.nmap
 sshuttle --dns -r [user]@[jump_host] [internal_subnet] --syslog
 ```
 
+- ```--dns``` = also tunnel DNS requests
+- ```-r user@jump_host``` = connect through user on edge router
+- ```--syslog``` = log activities to system logger for documentation
+
 **What happens:**
 - System prompts for SSH password
 - Connection establishes (may show "client: Connected")
@@ -183,6 +184,51 @@ nmap -Pn -sT -p [port] --script [script] [internal_ip] -oN tunnel_scan.nmap
 - `-Pn`: Tunnels often block ping, assume host is up
 - `-sT`: TCP connect scan works better through proxies/tunnels
 - Regular scans may fail through tunnels even if target is reachable
+
+---
+
+## Lab Workflow Summary
+
+### Step-by-Step Process
+
+**Step 1: Scan Edge Router** 
+```bash
+nmap -F [edge router] -oN [output file]
+```
+✅ Result: Found SSH on port 22
+
+**Step 2: Try Direct Scan of Internal Target**
+```bash
+nmap -p [target port] --script [nmap script] [internal target (MS)] -oN [output file for first MS test]
+```
+❌ Result: "Host seems down" - Cannot reach directly
+
+**Step 3: Establish Tunnel**
+```bash
+sshuttle --dns -r [user]@[edge router] [internal target subnet] --syslog
+```
+✅ Result: Tunnel active (terminal appears stuck - normal!)
+
+**Step 4: Scan Through Tunnel (NEW terminal)**
+```bash
+nmap -Pn -sT -p [target port] --script [nmap script] [internal target(MS)] -oN [output file for second MS test]
+```
+✅ Result: Found MS10, Windows Server 2016
+
+---
+
+## Visual Representation
+
+**Before Tunnel:**
+```
+[You] --X--> [MS10 at 10.1.16.2]  ❌ BLOCKED
+```
+
+**After Tunnel:**
+```
+[You] --SSH Tunnel--> [Edge Router] --Internal Network--> [MS10]
+                    203.0.113.1                        10.1.16.2
+```
 
 ---
 
@@ -468,4 +514,4 @@ To reinforce these skills, practice:
 
 ---
 
-*This study guide focuses on concepts and techniques learned. Always refer to official documentation and course materials for exam preparation.*
+*Lab completed as part of CertMaster PenTest+ training*
