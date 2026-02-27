@@ -15,8 +15,12 @@ This directory contains my write-ups, custom scripts, and notes from my labs on 
 | Date | Lab/Room Name | Focus | Key Learning |
 | :--- | :--- | :--- | :--- |
 | 2026-02-18 | [Linux Privilege Escalation: Special Permissions](./01-linux-privilege-escalation) | Linux Enumeration | SUID/SGID Binary Exploitation |
+| 2026-02-18 | [Identifying Unusual Binaries](./02-suid-exploitation.md) | Linux Enumeration | SUID/SGID Binary Exploitation |
+| 2026-02-25 | [Nmap Search Engine (NSE)](./01-linux-privilege-escalation) | Nmap | NSE |
 
 ---
 
 ## 🚀 Key Takeaways
 Every folder in this directory represents a "Lesson Learned." I focus on not just getting the "root" flag, but understanding the underlying vulnerability that made it possible.
+
+*Work in Progress...*
