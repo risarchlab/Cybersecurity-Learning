@@ -16,7 +16,7 @@ This directory contains my write-ups, custom scripts, and notes from my labs on 
 | :--- | :--- | :--- | :--- |
 | 2026-02-18 | [Linux Privilege Escalation: Special Permissions](./01-linux-privilege-escalation) | Linux Enumeration | SUID/SGID Binary Exploitation |
 | 2026-02-18 | [Identifying Unusual Binaries](./02-suid-exploitation.md) | Linux Enumeration | SUID/SGID Binary Exploitation |
-| 2026-02-25 | [Nmap Search Engine (NSE)](./01-linux-privilege-escalation) | Nmap | NSE |
+| 2026-02-25 | [Nmap Search Engine (NSE)](./Nmap%20Scripting%20Engine%20(NSE).md) | Nmap | NSE |
 
 ---
 
