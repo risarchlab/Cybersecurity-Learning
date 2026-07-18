@@ -11,7 +11,7 @@
 
 This exercise involved identifying and cracking four password hashes, each produced by a **different algorithm**. The goal was not just to recover plaintext passwords, but to demonstrate *why identifying the hash type is a required first step* — feeding a hash to the wrong Hashcat mode fails immediately, regardless of how weak the underlying password is.
 
-A key teaching point: **three of the four hashes share the same plaintext (`password`) yet look completely different**, because the algorithm transforms the input differently. The algorithm matters as much as the password.
+A key teaching point: **three of the four hashes share the same plaintext (`<redacted>`) yet look completely different**, because the algorithm transforms the input differently. The algorithm matters as much as the password.
 
 | Hash | Algorithm | Hashcat Mode | Plaintext |
 |------|-----------|:------------:|-----------|
